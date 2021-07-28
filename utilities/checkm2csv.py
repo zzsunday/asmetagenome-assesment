@@ -1,12 +1,12 @@
-import panda as pd
+import pandas as pd
 from pathlib import Path
-
+import json
 
 
 
 cwd = str(Path.cwd())
 
-def check2csv(file_path:str, csv_path):
+def checkm2csv(file_path:str, csv_path):
     with open(file_path, 'r') as f:
         load = {}
         for line in f:
@@ -18,7 +18,7 @@ def check2csv(file_path:str, csv_path):
             #print(new)
             dat_dict = json.loads(new)
             load[bin_id] = dat_dict
-    csv_path = cwd + '/' + csv_path
+    #csv_path = cwd + '/' + csv_path
     with open(csv_path, 'w+') as output:
         output.write('Bin_id\tContig length\tCompleteness\tContamination\n')
         for key in load:
